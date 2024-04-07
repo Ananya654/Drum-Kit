@@ -8,12 +8,15 @@ for(var i = 0;i < document.querySelectorAll(".drum").length; i++){
 document.querySelectorAll(".drum")[i].addEventListener("click",function (){
     var buttonInnerHTML = this.innerHTML;
     sound(buttonInnerHTML);
+
+    buttonAnimation(buttonInnerHTML);
     
 });
 }
 
 document.addEventListener("keydown",function(event){
     sound(event.key);
+    buttonAnimation(event.key);
 })
 
 
@@ -59,3 +62,12 @@ function sound(key){
             console.log(buttonInnerHTML);
             break;
     }}
+
+
+    function buttonAnimation(Currentkey){
+      var active =  document.querySelector("." + Currentkey);
+      active.classList.add("pressed");
+      setTimeout(() => {
+          active.classList.remove("pressed")}, 100);
+    
+    }
